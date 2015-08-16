@@ -9,10 +9,8 @@ var gulp = require('gulp'),
     babelify = require('babelify'),
     stylus = require('gulp-stylus'),
     autoprefixer = require('autoprefixer-stylus'),
-    livereload = require('gulp-server-livereload'),
     del = require('del'),
     browserSync = require('browser-sync');
-
 
 /*
   Babel/React/Browserify/Watchify Compilation
@@ -65,32 +63,17 @@ gulp.task('html', function () {
 gulp.task('watch', function() {
   gulp.watch('src/stylus/**/*.styl', ['stylus']);
   gulp.watch('src/index.html', ['html']);
-  gulp.watch("dist/index.html").on('change', browserSync.reload);
-  gulp.watch("dist/bundle.js").on('change', browserSync.reload);
+  gulp.watch('dist/index.html').on('change', browserSync.reload);
+  gulp.watch('dist/bundle.js').on('change', browserSync.reload);
 });
 
 gulp.task('serve', function() {
   browserSync({
-      server: {
-          baseDir: "./dist"
-      }
+    server: {
+        baseDir: "./dist"
+    }
   });
 });
-
-// gulp.task('dev-server', function() {
-//   gulp.src('./dist')
-//     .pipe(livereload({
-//       host: 'localhost',
-//       port: 8001,
-//       livereload: {
-//         enable: true,
-//         host: '0.0.0.0',
-//         port: 3002
-//       },
-//       directoryListing: false,
-//       open: true
-//     }));
-// });
 
 gulp.task('clean', function() {
   return del('dist');

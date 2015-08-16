@@ -1,11 +1,6 @@
-var multiply = require('./multiply');
+var React = require('react');
 
-var obj = {
-  name: "Jeff",
-  age: 30
-}
-
-var {name, age} = obj;
-
-console.log(multiply(2, 5));
-console.log(name, age);
+React.render(
+  <h1>Hello world!</h1>,
+  document.getElementById('main')
+);
