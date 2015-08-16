@@ -2,7 +2,7 @@ var multiply = require('./multiply');
 
 var obj = {
   name: "Jeff",
-  age: 99
+  age: 25
 }
 
 var {name, age} = obj;

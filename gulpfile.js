@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     babelify = require('babelify'),
     stylus = require('gulp-stylus'),
     autoprefixer = require('autoprefixer-stylus'),
-    livereload = require('gulp-server-livereload');
+    livereload = require('gulp-server-livereload'),
+    del = require('del');
 
 
 /*
@@ -62,7 +63,7 @@ gulp.task('html', function () {
 gulp.task('watch', function() {
   gulp.watch('src/stylus/**/*.styl', ['stylus']);
   gulp.watch('src/index.html', ['html']);
-})
+});
 
 gulp.task('dev-server', function() {
   gulp.src('./dist')
@@ -77,6 +78,10 @@ gulp.task('dev-server', function() {
       directoryListing: false,
       open: true
     }));
+});
+
+gulp.task('clean', function() {
+  return del('dist');
 })
 
 gulp.task('default', ['html', 'stylus', 'js', 'watch', 'dev-server']);
