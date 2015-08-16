@@ -10,7 +10,8 @@ var gulp = require('gulp'),
     stylus = require('gulp-stylus'),
     autoprefixer = require('autoprefixer-stylus'),
     livereload = require('gulp-server-livereload'),
-    del = require('del');
+    del = require('del'),
+    browserSync = require('browser-sync');
 
 
 /*
@@ -53,6 +54,7 @@ gulp.task('stylus', function () {
       use: [autoprefixer('iOS >= 7', 'last 1 Chrome version')]
     }))
     .pipe(gulp.dest('./dist/css'))
+    .pipe(browserSync.stream());
 });
 
 gulp.task('html', function () {
@@ -63,25 +65,35 @@ gulp.task('html', function () {
 gulp.task('watch', function() {
   gulp.watch('src/stylus/**/*.styl', ['stylus']);
   gulp.watch('src/index.html', ['html']);
+  gulp.watch("dist/index.html").on('change', browserSync.reload);
+  gulp.watch("dist/bundle.js").on('change', browserSync.reload);
 });
 
-gulp.task('dev-server', function() {
-  gulp.src('./dist')
-    .pipe(livereload({
-      host: 'localhost',
-      port: 8001,
-      livereload: {
-        enable: true,
-        host: '0.0.0.0',
-        port: 3002
-      },
-      directoryListing: false,
-      open: true
-    }));
+gulp.task('serve', function() {
+  browserSync({
+      server: {
+          baseDir: "./dist"
+      }
+  });
 });
+
+// gulp.task('dev-server', function() {
+//   gulp.src('./dist')
+//     .pipe(livereload({
+//       host: 'localhost',
+//       port: 8001,
+//       livereload: {
+//         enable: true,
+//         host: '0.0.0.0',
+//         port: 3002
+//       },
+//       directoryListing: false,
+//       open: true
+//     }));
+// });
 
 gulp.task('clean', function() {
   return del('dist');
 })
 
-gulp.task('default', ['html', 'stylus', 'js', 'watch', 'dev-server']);
+gulp.task('default', ['html', 'stylus', 'js', 'watch', 'serve']);
