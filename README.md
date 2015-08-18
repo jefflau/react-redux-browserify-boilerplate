@@ -1,4 +1,4 @@
-# React Browserify Starter Project
+# React Browserify Boilerplate
 
 Uses: React, Browserify, Babel (Babelify), BrowserSync, Stylus(+Rupture)
 
