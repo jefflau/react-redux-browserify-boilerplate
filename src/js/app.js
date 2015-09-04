@@ -7,7 +7,7 @@ var App = Radium(React.createClass({
   render: function() {
     return (
       <div className="app">
-        <Nav />
+        <Nav green={true} />
       </div>
     )
   }
