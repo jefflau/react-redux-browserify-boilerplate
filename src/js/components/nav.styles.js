@@ -1,4 +1,4 @@
-module.exports = {
+var styles = {
   nav: {
 
   },
@@ -21,3 +21,5 @@ module.exports = {
     color: 'green'
   }
 };
+
+export { styles as default }
