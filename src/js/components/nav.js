@@ -4,7 +4,7 @@ import Radium from 'radium';
 import styles from './nav.styles';
 
 @Radium
-class Nav extends React.Component {
+export class Nav extends React.Component {
   render() {
     return (
       <ul className="nav">
@@ -14,6 +14,3 @@ class Nav extends React.Component {
     )
   }
 }
-
-module.exports = Nav
-

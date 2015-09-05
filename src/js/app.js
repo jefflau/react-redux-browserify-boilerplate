@@ -1,13 +1,10 @@
 import React from 'react';
 import Radium from 'radium';
 
-import Nav from './components/nav';
+import { Nav } from './components/nav';
 
 @Radium
 class App extends React.Component {
-  constructor() {
-    super();
-  }
   render() {
     return (
       <div className="app">

@@ -24,7 +24,7 @@ var customOpts = {
 var opts = assign({}, watchify.args, customOpts);
 var b = watchify(browserify(opts)); 
     b.transform(babelify.configure({
-      optional: ['es7.decorators']
+      optional: ['es7.decorators'] // Decorator support for Radium
     }));
 
 gulp.task('js', bundle); // so you can run `gulp js` to build the file
