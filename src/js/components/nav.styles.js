@@ -11,7 +11,7 @@ module.exports = {
     color: 'blue',
     textDecoration: 'none',
     ':hover': {
-      color: 'red',
+      color: 'yellow',
       textDecoration: 'underline',
       transition: '0.2s'
     }

@@ -23,7 +23,9 @@ var customOpts = {
 };
 var opts = assign({}, watchify.args, customOpts);
 var b = watchify(browserify(opts)); 
-    b.transform(babelify);
+    b.transform(babelify.configure({
+      optional: ['es7.decorators']
+    }));
 
 gulp.task('js', bundle); // so you can run `gulp js` to build the file
 b.on('update', bundle); // on any dep update, runs the bundler

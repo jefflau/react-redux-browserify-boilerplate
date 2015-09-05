@@ -3,15 +3,19 @@ var React = require('react'),
 
 var Nav = require('./components/nav');
 
-var App = Radium(React.createClass({
-  render: function() {
+@Radium
+class App extends React.Component {
+  constructor() {
+    super();
+  }
+  render() {
     return (
       <div className="app">
         <Nav green={true} />
       </div>
     )
   }
-}));
+}
 
 React.render(
   <App />,
