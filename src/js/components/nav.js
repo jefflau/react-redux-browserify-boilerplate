@@ -1,7 +1,7 @@
-var React = require('react'),
-    Radium = require('radium');
+import React from 'react';
+import Radium from 'radium';
 
-var styles = require('./nav.styles');
+import styles from './nav.styles';
 
 @Radium
 class Nav extends React.Component {

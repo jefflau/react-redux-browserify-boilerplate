@@ -1,7 +1,7 @@
-var React = require('react'),
-    Radium = require('radium');
+import React from 'react';
+import Radium from 'radium';
 
-var Nav = require('./components/nav');
+import Nav from './components/nav';
 
 @Radium
 class App extends React.Component {
