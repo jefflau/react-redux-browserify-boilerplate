@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "browser-sync": "^2.8.2",
-    "del": "^1.2.1"
+    "del": "^1.2.1",
+    "gulp-babel": "^5.2.1"
   }
 }
