@@ -1,7 +1,11 @@
+import "babelify/polyfill";
+
 import React from 'react';
 import Radium from 'radium';
 
 import { Nav } from './components/nav';
+
+console.log(Promise);
 
 @Radium
 class App extends React.Component {
