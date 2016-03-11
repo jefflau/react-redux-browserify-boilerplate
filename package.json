@@ -9,25 +9,27 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autoprefixer-stylus": "^0.7.1",
-    "babelify": "^6.1.3",
-    "gulp-babel": "^5.2.1",
-    "browserify": "^11.0.1",
-    "buffer": "^3.4.1",
-    "gulp": "^3.9.0",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-stylus": "^2.0.6",
-    "gulp-util": "^3.0.6",
-    "lodash.assign": "^3.2.0",
-    "react": "^0.13.3",
-    "rupture": "^0.6.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.3.1",
-    "radium": "~0.13.8"
+    "autoprefixer-stylus": "*",
+    "babelify": "*",
+    "browserify": "*",
+    "buffer": "*",
+    "gulp": "*",
+    "gulp-babel": "*",
+    "gulp-sourcemaps": "*",
+    "gulp-stylus": "*",
+    "gulp-util": "*",
+    "lodash.assign": "*",
+    "radium": "*",
+    "react": "*",
+    "react-redux": "*",
+    "rupture": "*",
+    "vinyl-buffer": "*",
+    "vinyl-source-stream": "*",
+    "watchify": "*"
   },
   "devDependencies": {
-    "browser-sync": "^2.8.2",
-    "del": "^1.2.1"
+    "browser-sync": "*",
+    "del": "*",
+    "redux-devtools": "*"
   }
 }
