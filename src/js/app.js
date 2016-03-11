@@ -1,6 +1,7 @@
-import "babelify/polyfill";
+import "babel-polyfill";
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Radium from 'radium';
 
 import { Nav } from './components/nav';
@@ -17,7 +18,7 @@ class App extends React.Component {
   }
 }
 
-React.render(
+ReactDOM.render(
   <App />,
   document.getElementById('main')
 );
