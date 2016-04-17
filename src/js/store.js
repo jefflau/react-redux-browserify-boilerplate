@@ -11,6 +11,7 @@ function todos (state = [], action) {
           completed: false
         }
       ]
+      break;
     case "TOGGLE_TODO":
       return state.map((todo)=>{
         if(todo.id !== action.id){
@@ -21,11 +22,21 @@ function todos (state = [], action) {
           completed: !todo.completed
         }
       })
+      break;
     default:
       return state;
   }
 }
 
-const store = createStore(combineReducers({ todos }))
+function visibilityFilter (state = null, action) {
+  switch(action.type){
+    case "SET_VISIBILITY_FILTER":
+      return action.filter;
+    default:
+      return state;
+  }
+}
+
+const store = createStore(combineReducers({ todos, visibilityFilter }))
 
 export default store;

@@ -4,8 +4,26 @@ import store from '../store';
 
 var nextTodoId = 0;
 
+function getVisibleTodos(todos, filter) {
+  switch(filter){
+    case "SHOW_ALL":
+      return todos;
+      break;
+    case "SHOW_ACTIVE":
+      return todos.filter(t => !t.completed)
+      break;
+    case "SHOW_COMPLETED":
+      return todos.filter(t => t.completed)
+      break;
+    default:
+      return todos;
+  }
+}
+
 export default class Todos extends Component {
   render() {
+    console.log(this.props.visibilityFilter);
+    let visibleTodos = getVisibleTodos(this.props.todos, this.props.visibilityFilter);
     return (
       <div>
         <form onSubmit={(e)=>{
@@ -20,10 +38,11 @@ export default class Todos extends Component {
         }}>
         <input type="text" ref={node=> this.input = node} />
         </form>
-        {this.props.todos.map((todo)=>
-          <li>{todo.text}</li>
+        {visibleTodos.map((todo)=>
+          <li onClick={()=> store.dispatch({ type:"TOGGLE_TODO", id: todo.id})} style={todo.completed ? {textDecoration: "line-through"} : {}}>{todo.text}</li>
         )}
       </div>
     )
   }
 }
+ 

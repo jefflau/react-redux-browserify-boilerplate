@@ -3,11 +3,11 @@ import "babel-polyfill";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
+import store from './store';
 
 import { Nav } from './components/nav';
 import Todos from './components/todos';
-import Counter from './components/counter';
-import store from './store';
+import FilterLink from './components/filterLink';
 
 @Radium
 class App extends React.Component {
@@ -16,8 +16,12 @@ class App extends React.Component {
       <div className="app">
         <Nav green={true} />
         <Todos
-          todos={store.getState().todos}
+          {...store.getState()}
         />
+        Show: 
+        <FilterLink filter="SHOW_ALL">All</FilterLink>
+        <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
+        <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
       </div>
     )
   }
