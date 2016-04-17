@@ -9,6 +9,8 @@ import { Nav } from './components/nav';
 import Todos from './components/todos';
 import FilterLink from './components/filterLink';
 
+const onFilterClick = (filter) => store.dispatch({ type: "SET_VISIBILITY_FILTER", filter})
+
 @Radium
 class App extends React.Component {
   render() {
@@ -21,9 +23,9 @@ class App extends React.Component {
           {...state}
         />
         Show: 
-        <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>All </FilterLink>
-        <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter} >Active </FilterLink>
-        <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>Completed</FilterLink>
+        <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter} onClick={onFilterClick}>All </FilterLink>
+        <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter} onClick={onFilterClick}>Active </FilterLink>
+        <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter} onClick={onFilterClick}>Completed</FilterLink>
       </div>
     )
   }
