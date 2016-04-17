@@ -22,7 +22,6 @@ function getVisibleTodos(todos, filter) {
 
 export default class Todos extends Component {
   render() {
-    console.log(this.props.visibilityFilter);
     let visibleTodos = getVisibleTodos(this.props.todos, this.props.visibilityFilter);
     return (
       <div>

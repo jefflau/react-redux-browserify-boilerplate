@@ -3,8 +3,13 @@ import React from 'react';
 
 export default function FilterLink ({
   filter,
-  children
+  children,
+  currentFilter
 }){
+  if(currentFilter === filter) {
+    return <span>{children}</span>
+  } 
+
   return (
     <a href="#" onClick={(e)=> { 
       e.preventDefault();

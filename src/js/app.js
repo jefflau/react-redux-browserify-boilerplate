@@ -12,16 +12,18 @@ import FilterLink from './components/filterLink';
 @Radium
 class App extends React.Component {
   render() {
+    const state = store.getState();
+    const { visibilityFilter } = state;
     return (
       <div className="app">
         <Nav green={true} />
         <Todos
-          {...store.getState()}
+          {...state}
         />
         Show: 
-        <FilterLink filter="SHOW_ALL">All</FilterLink>
-        <FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
-        <FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
+        <FilterLink filter="SHOW_ALL" currentFilter={visibilityFilter}>All </FilterLink>
+        <FilterLink filter="SHOW_ACTIVE" currentFilter={visibilityFilter} >Active </FilterLink>
+        <FilterLink filter="SHOW_COMPLETED" currentFilter={visibilityFilter}>Completed</FilterLink>
       </div>
     )
   }
