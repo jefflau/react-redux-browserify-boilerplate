@@ -11,7 +11,6 @@ var styles = {
     color: 'blue',
     textDecoration: 'none',
     ':hover': {
-      color: 'yellow',
       textDecoration: 'underline',
       transition: '0.2s'
     }

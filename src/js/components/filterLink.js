@@ -1,10 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function FilterLink ({
+function FilterLink ({
   filter,
   children,
-  currentFilter,
-  onClick
+  onClick,
+  currentFilter
 }){
   if(currentFilter === filter) {
     return <span>{children}</span>
@@ -14,3 +15,11 @@ export default function FilterLink ({
     <a href="#" onClick={()=> onClick(filter)}>{children}</a>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    currentFilter: state.visibilityFilter
+  }
+}
+
+export default connect(mapStateToProps, null)(FilterLink);

@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium from 'radium';
 import store from './store';
+import { Provider } from 'react-redux';
 
 import { Nav } from './components/nav';
 import Todos from './components/todos';
@@ -31,12 +32,10 @@ class App extends React.Component {
   }
 }
 
-function render(){
-  ReactDOM.render(
-    <App />,
-    document.getElementById('main')
-  );
-}
-
-render();
-store.subscribe(render);
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  ,
+  document.getElementById('main')
+);

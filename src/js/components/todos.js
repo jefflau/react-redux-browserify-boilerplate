@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux'; 
 const { Component } = React;
 import store from '../store';
 
@@ -20,28 +21,51 @@ function getVisibleTodos(todos, filter) {
   }
 }
 
-export default class Todos extends Component {
+class Todos extends Component {
   render() {
-    let visibleTodos = getVisibleTodos(this.props.todos, this.props.visibilityFilter);
+    let { todos, onAddTodo, onTodoClick } = this.props;
+
+    console.log(todos);
     return (
       <div>
         <form onSubmit={(e)=>{
           e.preventDefault();
-          store.dispatch({
-            type: "ADD_TODO",
-            id: nextTodoId++,
-            text: this.input.value
-          })
-
+          onAddTodo(this.input.value);
           this.input.value = "";
         }}>
         <input type="text" ref={node=> this.input = node} />
         </form>
-        {visibleTodos.map((todo)=>
-          <li onClick={()=> store.dispatch({ type:"TOGGLE_TODO", id: todo.id})} style={todo.completed ? {textDecoration: "line-through"} : {}}>{todo.text}</li>
+        {todos.map((todo)=>
+          <li onClick={()=> onTodoClick(todo.id)} style={todo.completed ? {textDecoration: "line-through"} : {}}>{todo.text}</li>
         )}
       </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    todos: getVisibleTodos(state.todos, state.visibilityFilter)
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTodoClick: (id) => {
+      dispatch({
+        type:"TOGGLE_TODO", id: id
+      })
+    },
+
+    onAddTodo: (value) => {
+      dispatch({
+        type: "ADD_TODO",
+        id: nextTodoId++,
+        text: value
+      })
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Todos);
  
