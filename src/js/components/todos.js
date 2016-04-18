@@ -43,6 +43,7 @@ class Todos extends Component {
   }
 }
 
+
 const mapStateToProps = (state) => {
   return {
     todos: getVisibleTodos(state.todos, state.visibilityFilter)
@@ -68,4 +69,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);
- 
