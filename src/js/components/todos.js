@@ -1,8 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 const { Component } = React;
 import store from '../store';
-
+import { v4 } from 'node-uuid';
 var nextTodoId = 0;
 
 function getVisibleTodos(todos, filter) {
@@ -25,7 +25,6 @@ class Todos extends Component {
   render() {
     let { todos, onAddTodo, onTodoClick } = this.props;
 
-    console.log(todos);
     return (
       <div>
         <form onSubmit={(e)=>{
@@ -35,8 +34,8 @@ class Todos extends Component {
         }}>
         <input type="text" ref={node=> this.input = node} />
         </form>
-        {todos.map((todo)=>
-          <li onClick={()=> onTodoClick(todo.id)} style={todo.completed ? {textDecoration: "line-through"} : {}}>{todo.text}</li>
+        {todos.map((todo, i)=>
+          <li key={i} onClick={()=> onTodoClick(todo.id)} style={todo.completed ? {textDecoration: "line-through"} : {}}>{todo.text}</li>
         )}
       </div>
     )
@@ -61,7 +60,7 @@ const mapDispatchToProps = (dispatch) => {
     onAddTodo: (value) => {
       dispatch({
         type: "ADD_TODO",
-        id: nextTodoId++,
+        id: v4(),
         text: value
       })
     }

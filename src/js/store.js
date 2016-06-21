@@ -1,42 +1,20 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import todos from './reducers/todosReducer';
+import visibilityFilter from './reducers/visibilityFilterReducer';
 
-function todos (state = [], action) {
-  switch(action.type){
-    case "ADD_TODO":
-      return [
-        ...state,
-        {
-          id: action.id,
-          text: action.text,
-          completed: false
-        }
-      ]
-      break;
-    case "TOGGLE_TODO":
-      return state.map((todo)=>{
-        if(todo.id !== action.id){
-          return todo;
-        }
-        return {
-          ...todo,
-          completed: !todo.completed
-        }
-      })
-      break;
-    default:
-      return state;
-  }
-}
+//middleware
+import createLogger from 'redux-logger';
+import thunk from 'redux-thunk';
+const logger = createLogger();
 
-function visibilityFilter (state = "SHOW_ALL", action) {
-  switch(action.type){
-    case "SET_VISIBILITY_FILTER":
-      return action.filter;
-    default:
-      return state;
-  }
-}
+const middleware = [logger, thunk];
 
-const store = createStore(combineReducers({ todos, visibilityFilter }))
+const reducer = combineReducers({ todos, visibilityFilter });
+
+const store = createStore(
+  reducer,
+  {},
+  applyMiddleware(...middleware)
+);
 
 export default store;
